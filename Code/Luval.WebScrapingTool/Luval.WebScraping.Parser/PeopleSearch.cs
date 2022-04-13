@@ -67,8 +67,9 @@ namespace Luval.WebScraping.Parser
 
         private string GetEmail(HtmlNode node)
         {
-            var item = GetNodeByClass(node, "email").SelectSingleNode("a");
-            return GetValue(item);
+            var item = GetNodeByClass(node, "email");
+            if (item == null) return string.Empty;
+            return GetValue(item.SelectSingleNode("a"));
         }
 
         private string GetDepartment(HtmlNode node)

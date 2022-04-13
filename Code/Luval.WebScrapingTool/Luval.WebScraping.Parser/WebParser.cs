@@ -46,8 +46,8 @@ namespace Luval.WebScraping.Parser
         public async Task<IEnumerable<HtmlNode>> RunSelectorAsync(string url, Expression<Func<HtmlNode, bool>> filter)
         {
             var doc = await ParseAsync(url);
-            return doc.Descendants().ToList()
-                .Where(filter.Compile()).ToList();
+            return doc.Descendants()
+                .Where(filter.Compile());
         }
 
 
